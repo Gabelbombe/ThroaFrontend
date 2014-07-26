@@ -17,7 +17,7 @@ Namespace Helpers
          * @return $this
          * @throws \RuntimeException
          */
-        public function hasInput()
+        public function inputs()
         {
             // Should be a global setter
             if (empty($this->payload)) Throw New \RuntimeException('Input cannot be empty..');
@@ -27,28 +27,18 @@ Namespace Helpers
 
 
         /**
-         * Count players than can play, 1 >= $_GET
-         *
          * @return $this
-         * @throws \LogicException
+         * @throws \RuntimeException
          */
         public function filters()
         {
-            $filter = filter_var_array(
+            if (count(filter_var_array(
                 $this->payload,
                 [
-                    [ ]
+                    'url' => FILTER_VALIDATE_URL,
+                    'app' => FILTER_VALIDATE_INT,
                 ]
-            );
-
-            $players = filter_var($this->input['players'], FILTER_VALIDATE_INT );
-
-            $this->players = (isset($players) && ! empty($players))
-                ? $players
-                : false;
-
-            // better way to handle none equal length strings than throw?
-            if (false === $this->players || 1 >= $this->players) Throw New \LogicException('Players must be present or greater than 1...');
+            )) !== count($this->payload)) Throw New \RuntimeException('Bad metrics in GET request..');
 
             return $this;
         }

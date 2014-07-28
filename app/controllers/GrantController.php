@@ -2,7 +2,7 @@
 
 Class GrantController Extends BaseController
 {
-    USE Magic;
+    USE Setters, Getters;
 
     const INSTAGRAM = '//instagram.com/p/';
 

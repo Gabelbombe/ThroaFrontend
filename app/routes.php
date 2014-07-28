@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/{url}/{app}', function($url, $app)
 {
-	return View::make('hello');
-});
+    return View::make('grant', [
+        'url' => $url,
+        'app' => $app,
+    ]);
+})
+->where(['url' => '^[a-zA-Z0-9_]{10}+', 'name' => '[0-9]{4,10}+']);

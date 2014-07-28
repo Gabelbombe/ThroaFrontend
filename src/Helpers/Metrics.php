@@ -35,8 +35,22 @@ Namespace Helpers
             if (count(array_filter($filter = filter_var_array(
                 $this->payload,
                 [
-                    'url' => FILTER_VALIDATE_URL,
-                    'app' => FILTER_VALIDATE_INT,
+                    'url' => [
+                        'filter'  => FILTER_VALIDATE_REGEXP,
+                        'flags'   => FILTER_NULL_ON_FAILURE,
+                        'options' => [
+                            'regexp' => '/^[a-zA-Z0-9_]+$/'
+                        ],
+                    ],
+
+                    'app' => [
+                        'filter'  => FILTER_VALIDATE_INT,
+                        'flags'   => FILTER_REQUIRE_SCALAR | FILTER_FLAG_ALLOW_OCTAL | FILTER_NULL_ON_FAILURE,
+                        'options' => [
+                            'min_range'    => 00000,    // limit 00001
+                            'max_range'    => 99999,    // limit 99999
+                        ],
+                    ],
                 ]
             ))) !== count($this->payload)) Throw New \RuntimeException("Bad metrics: {$this->filterNotEmpty($filter)}, in GET request..");
 

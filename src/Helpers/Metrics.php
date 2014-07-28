@@ -32,15 +32,20 @@ Namespace Helpers
          */
         public function filters()
         {
-            if (count(filter_var_array(
+            if (count(array_filter($filter = filter_var_array(
                 $this->payload,
                 [
                     'url' => FILTER_VALIDATE_URL,
                     'app' => FILTER_VALIDATE_INT,
                 ]
-            )) !== count($this->payload)) Throw New \RuntimeException('Bad metrics in GET request..');
+            ))) !== count($this->payload)) Throw New \RuntimeException("Bad metrics: {$this->filterNotEmpty($filter)}, in GET request..");
 
             return $this;
+        }
+
+        private function filterNotEmpty(array $array)
+        {
+            return implode(', ', array_keys(array_filter($array, create_function('$a','return $a=="";'))));
         }
     }
 }

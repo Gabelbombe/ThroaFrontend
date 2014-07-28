@@ -7,12 +7,11 @@
   <meta name="viewport" id="view" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link media="all" rel="stylesheet" type="text/css" href="css/legal.css" />
-  <link media="all" rel="stylesheet" type="text/css" href="css/fonts.css" />
-  <link media="all" rel="stylesheet" type="text/css" href="css/application.css" />
+  <link media="all" rel="stylesheet" type="text/css" href="/css/legal.css" />
+  <link media="all" rel="stylesheet" type="text/css" href="/css/application.css" />
 
-  <script type="text/javascript" src="js/application.js" ></script>
-  <script type="text/javascript" src="js/timeago.js"></script>
+  <script type="text/javascript" src="/js/application.js" ></script>
+  <script type="text/javascript" src="/js/timeago.js"></script>
 
   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
@@ -42,9 +41,11 @@
 
         if ($.urlParam('url') && $.urlParam('app')){
           var parts = {
-            url: decodeURIComponent($.urlParam('url').replace('http://', '//')),
+            url: decodeURIComponent('http://instagram.com/p/' + $.urlParam('url')),
             app: "http://tool.throa.com/approve/" + $.urlParam('app')
           };
+
+        console.dir('Parts: ' + parts);
 
           $.ajaxPrefilter(function(options){
             if(options.crossDomain && $.support.cors){
@@ -73,8 +74,6 @@
               'right':    '-57px',
               'top':      '3px'
             });
-
-            console.log(data);
         };
 
       });
@@ -89,7 +88,7 @@
     <div id="permission-header">
 
       <p id="brand-avatar">
-          <img alt="Filson® Since 1897" src="img/filson-logo.png" />
+          <img alt="Filson® Since 1897" src="/img/filson-logo.png" />
       </p>
 
       <h1>Filson loves your image and would like to feature it.</h1>
@@ -98,7 +97,7 @@
         <div class="content-container">
           <p class="avatar">
             <a href="http://twitter.com/filson1897">
-              <img alt="Filson® Since 1897" src="img/filson-logo.png" />
+              <img alt="Filson® Since 1897" src="/img/filson-logo.png" />
             </a>
           </p>
         </div>

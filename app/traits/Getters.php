@@ -1,32 +1,35 @@
 <?php
 
-Trait Getters
+Namespace Traits
 {
-    /**
-     * calls Class::$name()
-     *
-     * @param string $name the name of a requested property
-     * @return mixed the result
-     */
-
-    public function __get($name)
+    Trait Getters
     {
-        return $this->__call($name);
-    }
+        /**
+         * calls Class::$name()
+         *
+         * @param string $name the name of a requested property
+         * @return mixed the result
+         */
 
-    /**
-     * checks wether a get method get<$Name>() exists and calls it
-     *
-     * @param string $name
-     * @param array  $args optional
-     * @return mixed
-     * @throws Exception
-     */
-    public function __call($name, $args = []) // array $args = [] ??
-    {
-        if (method_exists($this, $method = 'get' . ucfirst($name)))
-            return $this->{$method} ($args);
+        public function __get($name)
+        {
+            return $this->__call($name);
+        }
 
-        Throw New \Exception('Method or property does not exists');
+        /**
+         * checks wether a get method get<$Name>() exists and calls it
+         *
+         * @param string $name
+         * @param array  $args optional
+         * @return mixed
+         * @throws \Exception
+         */
+        public function __call($name, $args = []) // array $args = [] ??
+        {
+            if (method_exists($this, $method = 'get' . ucfirst($name)))
+                return $this->{$method} ($args);
+
+            Throw New \Exception('Method or property does not exists');
+        }
     }
 }

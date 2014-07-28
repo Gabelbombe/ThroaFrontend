@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://54.200.197.102:8080',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -77,8 +77,7 @@ return array(
 	| will not be safe. Please do this before deploying an application!
 	|
 	*/
-
-	'key' => 'YourSecretKey!!!',
+	'key' => getenv('CRYPTO_KEY'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 

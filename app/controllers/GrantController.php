@@ -2,13 +2,21 @@
 
 Class GrantController Extends BaseController
 {
-    USE Setters, Getters;
+    USE Traits\Setters,
+        Traits\Getters;
 
-    const INSTAGRAM = '//instagram.com/p/';
+    const INSTAGRAM = 'http://instagram.com/p/';
 
     protected   $url = false,
                 $app = false;
 
+    /**
+     * Run the trap..
+     *
+     * @param $url
+     * @param $app
+     * @return mixed
+     */
     public function init($url, $app)
     {
         $this->testUrl($url)
@@ -22,35 +30,40 @@ Class GrantController Extends BaseController
 
     /**
      * @param $url
+     * @return $this
      * @throws HttpResponseException
      */
-    private function testURL($url)
+    private function testUrl($url)
     {
         $qualified = self::INSTAGRAM . $url;
 
         $ch = curl_init($qualified);
         curl_setopt_array($ch, [
-            CURLOPT_HEADER => 1,
             CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_CONNECTTIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_SSL_VERIFYHOST => 0,
         ]);
 
-        if (FALSE === ($response = curl_exec($ch)) || empty($response))
-        {
-            Throw New HttpResponseException('Request invalid; halting compiler, Curl error' . print_r(curl_error($ch),1));
-        }
+        $response = curl_exec($ch);
 
         // falls between 200:OK and 206:Partial_Content
-        if (! in_array(curl_getinfo($response, CURLINFO_HTTP_CODE), range(200,206)))
+        if (! in_array(curl_getinfo($ch, CURLINFO_HTTP_CODE), range(200,206)))
         {
             Throw New HttpResponseException('Asset url does not exists; halting compiler..');
         }
 
-        $this->__set('url', $qualified);
+            $this->__set('url', $qualified);
 
-        curl_close($response);
+        curl_close($ch);
+
+        return $this;
+    }
+
+    private function testApp($app)
+    {
+        return true;
+    }
+
+    public function setUrl($value)
+    {
+        $this->url = $value;
     }
 }

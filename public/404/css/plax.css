@@ -59,13 +59,12 @@ img {display:inline}
 #rabbit { height: 3000px; width: 4500px; background: url(../img/bg_rabbit.png) no-repeat 70% 180px; z-index: 0; position: absolute; top: 0; left: 50%; margin: 0 0 0 -2250px; }
 #hill { height: 3000px; width: 5000px; background: url(../img/bg_hill.png) no-repeat 50% 400px; z-index: 0; position: absolute; top: 0; left: 50%; margin: 0 0 0 -2500px; }
 #sign { height: 3000px; width: 5500px; background: url(../img/bg_sign.png) no-repeat 22% 350px; z-index: 0; position: absolute; top: 0; left: 50%; margin: 0 0 0 -2750px; }
-#content { height: 3000px; width: 4500px; z-index: 0; position: absolute; top: 0; left: 50%; margin: -20px 0 0 -2250px; }
-#content a.logo { display: inline-block; margin: 0 0 15px 0; }
+#content { height: 3000px; width: 4500px; z-index: 0; position: absolute; top: 0; left: 50%; margin: -20px 0 0 -2390px; }
+#content a.logo { float: left; display: inline-block; margin: 0 0 15px 0; }
 #content404 { position: relative; z-index: 999; width: 960px; margin: 100px auto 0 auto;  }
 #content404 h2 { color: #9CD7F7; font: 300 56px/100% 'Raleway', Helvetica, Arial, sans-serif;margin-bottom:10px }
 #content404 a.back { color: #9CD7F7; font: normal 14px/150% Raleway, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif; margin: 20px 0 10px 0;background:url(../img/icon_download.png) right 4px no-repeat;padding-right:20px;display:inline-block;text-decoration:none;letter-spacing:0px }
 #content404 a.back:hover {background:url(../img/icon_download.png) right -96px no-repeat;color:#9CD7F7}
 #content404 a { color: #9CD7F7;text-decoration:underline }
 #content404 a:hover { color: #fff;text-decoration:none }
-#content404 p { font: 300 22px/150% "Raleway", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;letter-spacing:-1px }
-#logo { position: absolute; left: 138%; top: 379%; }
+#content404 p { margin-left: 110px; font: 300 22px/150% "Raleway", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;letter-spacing:-1px }

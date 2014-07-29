@@ -13,8 +13,9 @@
 
 // http://54.200.197.102:8080/generic?url=gPFGUruPP4&app=1234
 
-Route::get('/',            'HomeController@Init');
 Route::get('/{url}/{app}', 'GrantController@Init');
+
+// backporting of old application
 Route::get('/generic', function()
 {
     if (count(array_filter($filter = filter_var_array(

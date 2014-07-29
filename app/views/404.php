@@ -4,13 +4,7 @@
 
 <head>
     <title>404 | Filson</title>
-
     <link type="text/css" rel="stylesheet" media="all" href="/404/css/plax.css" />
-    <!--[if lt IE 9]>
-    <style type="text/css">
-        .download { background: #011A30; }
-    </style>
-    <![endif]-->
 </head>
 <body>
 

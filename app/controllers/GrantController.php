@@ -2,8 +2,8 @@
 
 Class GrantController Extends BaseController
 {
-    USE Traits\Setters,
-        Traits\Getters;
+//    USE \Traits\Setters,
+//        \Traits\Getters;
 
     const INSTAGRAM = 'http://instagram.com/p/';
 
@@ -22,7 +22,7 @@ Class GrantController Extends BaseController
         $this->testUrl($url)
              ->testApp($app);
 
-        return View::make('grant', [
+        return \View::make('grant', [
             'url' => $this->url,
             'app' => $this->app,
         ]);
@@ -42,7 +42,7 @@ Class GrantController Extends BaseController
             CURLOPT_RETURNTRANSFER => 1,
         ]);
 
-        $response = curl_exec($ch);
+        curl_exec($ch); // test
 
         // falls between 200:OK and 206:Partial_Content
         if (! in_array(curl_getinfo($ch, CURLINFO_HTTP_CODE), range(200,206)))
@@ -50,7 +50,7 @@ Class GrantController Extends BaseController
             Throw New HttpResponseException('Asset url does not exists; halting compiler..');
         }
 
-            $this->__set('url', $qualified);
+            $this->setUrl($qualified);
 
         curl_close($ch);
 
@@ -59,6 +59,7 @@ Class GrantController Extends BaseController
 
     private function testApp($app)
     {
+        unset($app);
         return true;
     }
 

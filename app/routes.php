@@ -13,6 +13,12 @@
 
 // http://54.200.197.102:8080/generic?url=gPFGUruPP4&app=1234
 
+Route::get('/', function(){
+    return View::make('404');
+});
+
+Route::get('/php-info', 'HomeController@PHPInfo');
+
 Route::get('/{url}/{app}', 'GrantController@Init');
 
 // backporting of old application

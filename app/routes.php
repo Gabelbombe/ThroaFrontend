@@ -1,25 +1,16 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 // http://54.200.197.102:8080/generic?url=gPFGUruPP4&app=1234
-
-Route::get('/', function(){
+/*
+Route::get('/', function() {
     return View::make('404');
 });
+ */
 
-Route::get('/php-info', 'HomeController@PHPInfo');
 
-Route::get('/{url}/{app}', 'GrantController@Init');
+//Route::get('/php-info', 'HomeController@PHPInfo');
+
+    Route::get('/', 'GrantController@Init');
 
 // backporting of old application
 Route::get('/generic', function()

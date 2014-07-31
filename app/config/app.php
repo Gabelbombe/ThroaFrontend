@@ -93,7 +93,7 @@ return [
 	*/
 
 	'providers' => [
-
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',               // Automatic phpDoc generation for Laravel Facades
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',

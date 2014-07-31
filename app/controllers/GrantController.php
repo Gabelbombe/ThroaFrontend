@@ -2,37 +2,62 @@
 
 Class GrantController Extends BaseController
 {
-//    USE \Traits\Setters,
-//        \Traits\Getters;
-
-    const INSTAGRAM = 'http://instagram.com/p/';
-
-    protected   $url = false,
-                $app = false;
+    protected   $str  = null,
+                $obj  = null;
 
     /**
      * Run the trap..
      *
-     * @param $url
-     * @param $app
      * @return mixed
      */
-    public function init($url, $app)
+    public function init()
     {
-        $this->testUrl($url)
-             ->testApp($app);
+        $this->isBase64(current(Input::only(['request'])))->isJson();
 
-        return \View::make('grant', [
-            'url' => $this->url,
-            'app' => $this->app,
+        return \View::make('debug.dump', [
+            'data' => $this->obj,
         ]);
+
     }
 
     /**
+     * @param $data
+     * @return $this
+     * @throws LogicException
+     */
+    public function isBase64($data)
+    {
+        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) Throw New \LogicException('Data is of wrong type..');
+
+        $this->str = base64_decode($data);
+
+            return $this;
+    }
+
+    public function isJson()
+    {
+        if (! isset($this->str) || empty($this->str))   Throw New \LogicException('String was not set..');
+
+        $this->validateJsonContent();
+        $this->obj = json_decode($this->str);
+
+            return $this;
+    }
+
+
+    private function validateJsonContent()
+    {
+        $obj = json_decode($this->str);
+        echo (empty($obj) || 0 !== json_last_error()) ? 'yes' : 'no';
+    }
+
+    /*
+    /
+     * Legacy
      * @param $url
      * @return $this
      * @throws HttpResponseException
-     */
+     /
     private function testUrl($url)
     {
         $qualified = self::INSTAGRAM . $url;
@@ -56,14 +81,9 @@ Class GrantController Extends BaseController
 
         return $this;
     }
+*/
 
-    private function testApp($app)
-    {
-        unset($app);
-        return true;
-    }
-
-    public function setUrl($value)
+    public function setString($value)
     {
         $this->url = $value;
     }

@@ -2,8 +2,15 @@
 
 Class GrantController Extends BaseController
 {
-    protected   $str  = null,
-                $obj  = null;
+    const      CB_URL           = 'http://tool.throa.com/approve';
+
+    protected  $str             = null,
+               $obj             = null,
+               $url             = null;
+
+    protected  $throaItemId     = false,
+               $throaWidgetId   = false,
+               $request         = false;
 
     /**
      * Run the trap..
@@ -12,76 +19,131 @@ Class GrantController Extends BaseController
      */
     public function init()
     {
-        $this->isBase64(current(Input::only(['request'])))->isJson();
+        $this->filters(Input::only(['throa_item_id', 'throa_widget_id', 'request']))
+             ->isBase64()
+             ->isJson();
 
-        return \View::make('debug.dump', [
-            'data' => $this->obj,
+        return \View::make('grant', [
+            'user' => $this->obj,
+            'call' => $this->url,
         ]);
+
 
     }
 
     /**
-     * @param $data
+     * @param array $input
      * @return $this
-     * @throws LogicException
+     * @throws RuntimeException
      */
-    public function isBase64($data)
+    public function filters(array $input)
     {
-        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) Throw New \LogicException('Data is of wrong type..');
+        if (count(array_filter($filter = filter_var_array(
+            $input,
+            [
+                'request'       => [
+                    'filter'    => FILTER_VALIDATE_REGEXP,
+                    'flags'     => FILTER_NULL_ON_FAILURE,
+                    'options'   => [
+                                      'regexp' => '/^[a-zA-Z0-9=]+$/'
+                                   ],
+                ],
 
-        $this->str = base64_decode($data);
+                'throa_item_id' => [
+                    'filter'    => FILTER_VALIDATE_INT,
+                    'flags'     => FILTER_REQUIRE_SCALAR | FILTER_FLAG_ALLOW_OCTAL | FILTER_NULL_ON_FAILURE,
+                    'options'   => [
+                                       'min_range' => 000000000, // limit 000000001
+                                       'max_range' => 999999999, // limit 999999999
+                                   ],
+                ],
 
-            return $this;
-    }
+                'throa_widget_id' => [
+                    'filter'      => FILTER_VALIDATE_INT,
+                    'flags'       => FILTER_REQUIRE_SCALAR | FILTER_FLAG_ALLOW_OCTAL | FILTER_NULL_ON_FAILURE,
+                    'options'     => [
+                                        'min_range' => 000000000, // limit 000000001
+                                        'max_range' => 999999999, // limit 999999999
+                                     ],
+                ],
+            ]
+        ))) !== count($input)) Throw New \RuntimeException("Bad metrics: {$this->filterNotEmpty($filter)}, in GET request..");
 
-    public function isJson()
-    {
-        if (! isset($this->str) || empty($this->str))   Throw New \LogicException('String was not set..');
-
-        $this->validateJsonContent();
-        $this->obj = json_decode($this->str);
-
-            return $this;
-    }
-
-
-    private function validateJsonContent()
-    {
-        $obj = json_decode($this->str);
-        echo (empty($obj) || 0 !== json_last_error()) ? 'yes' : 'no';
-    }
-
-    /*
-    /
-     * Legacy
-     * @param $url
-     * @return $this
-     * @throws HttpResponseException
-     /
-    private function testUrl($url)
-    {
-        $qualified = self::INSTAGRAM . $url;
-
-        $ch = curl_init($qualified);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => 1,
-        ]);
-
-        curl_exec($ch); // test
-
-        // falls between 200:OK and 206:Partial_Content
-        if (! in_array(curl_getinfo($ch, CURLINFO_HTTP_CODE), range(200,206)))
+        foreach($input AS $key => $value)
         {
-            Throw New HttpResponseException('Asset url does not exists; halting compiler..');
+            $this->{$this->toCamelCase($key)} = $value;
         }
 
-            $this->setUrl($qualified);
-
-        curl_close($ch);
+        $this->makeUrl();
 
         return $this;
     }
-*/
+
+    /**
+     * @return $this
+     * @throws LogicException
+     */
+    public function isBase64()
+    {
+        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $this->request)) Throw New \LogicException('Data is of wrong type..');
+
+        $this->str = base64_decode($this->request);
+
+            return $this;
+    }
+
+    /**
+     * @return $this
+     * @throws LogicException
+     */
+    public function isJson()
+    {
+        if (! isset($this->str) || empty($this->str)) Throw New \LogicException('String was not set..');
+
+        $this->validateJsonContent();
+
+            return $this;
+    }
+
+    /**
+     * @return $this
+     * @throws LogicException
+     */
+    private function validateJsonContent()
+    {
+        $obj = json_decode($this->str);
+
+        if (empty($obj) || 0 !== json_last_error()) Throw New \LogicException('Decode error: ' . json_last_error_msg());
+
+        $this->obj = $obj;
+
+            return $this;
+    }
+
+    /*
+     * helpers
+     */
+
+    private function filterNotEmpty(array $array)
+    {
+        return implode(', ', array_keys(array_filter($array, create_function('$a','return $a=="";'))));
+    }
+
+    protected function toCamelCase($string)
+    {
+        return preg_replace_callback("/_[a-zA-Z]/", function($matches)
+            {
+                return strtoupper($matches[0][1]);
+            },
+        $string);
+    }
+
+    private function makeUrl()
+    {
+        $this->url = self::CB_URL . "/{$this->throaItemId}/{$this->throaWidgetId}";
+
+            return $this;
+    }
 
     public function setString($value)
     {

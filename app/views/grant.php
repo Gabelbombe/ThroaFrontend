@@ -14,69 +14,21 @@
     <script type="text/javascript" src="/js/timeago.js"></script>
 
     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-
     <script  type="text/javascript">
+
         $(function()
         {
             $("abbr.timeago").timeago();
 
-            $.urlParam = function(name){
-                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                return (null===results) ? null : results[1] || 0
-            }
-
-            $.filter = function(data){
-                var retVal = {};
-                $(data + ':contains("script")').each(function(json){
-                    var text = $.trim($(this).text());
-                    if($(this).children().length < 1 && text.length != ''){
-                        if (text.match(/^window._sharedData/) != null){
-                            retVal = $.parseJSON(text.replace('window._sharedData = ','').slice(0,-1));
-                            return false;
-                        }
-                    }
-                });
-                return retVal;
-            };
-
-            if ($.urlParam('url') && $.urlParam('app')){
-                var parts = {
-                    url: decodeURIComponent('http://instagram.com/p/' + $.urlParam('url')),
-                    app: "http://tool.throa.com/approve/" + $.urlParam('app')
-                };
-
-                console.dir('Parts: ' + parts);
-
-                $.ajaxPrefilter(function(options){
-                    if(options.crossDomain && $.support.cors){
-                        var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-                        options.url = http + '//cors-anywhere.herokuapp.com/' + options.url;
-                    }
-                });
-
-                var data = $.filter($.ajax({type: "GET", url: parts.url, async: false}).responseText);
-                var user = data.entry_data.DesktopPPage[0].media.owner.username;
-
-                $('p.photo-p img#instagram-photo').removeAttr("src").attr("src", data.entry_data.DesktopPPage[0].media.display_src);
-
-                $('p.avatar').append('<a href="//www.instagram.com/' + user + '"></a>');
-                $('p.avatar a').append('<img height="35" width="35" src="' + data.entry_data.DesktopPPage[0].media.owner.profile_pic_url + '" />' );
-
-                $('p.tweet-text').append('<a style="float: left;" href="//www.instagram.com/' + user + '">@' + user + '</a>');
-                $('p.tweet-text').append('<div style="color:#396246;">: ' + data.entry_data.DesktopPPage[0].media.caption + '</div>');
-                $('p.tweet-text').append('<p id="bitly_callback">' + $.urlParam('url'));
-
-                var time = $.timeago(new Date(1000 * data.entry_data.DesktopPPage[0].media.date));
+                var time = $.timeago(new Date(1000 * <?=$user->created_time?>));
 
                 $('p.date').html(time).css({
                     'float':    'right',
                     'position': 'relative',
-                    'right':    '-57px',
-                    'top':      '3px'
+                    'top':      '12px'
                 });
-            };
-
         });
+
     </script>
 
 </head>
@@ -114,7 +66,7 @@
                 // Check that they checked the box if they're agreeing.
                 $("#permission-form button").each(function(){
                     if($(this).data('clicked') && $(this).attr('id') == 'approve-button'){
-                        if(!$("#agree_to_terms").is(':checked')){
+                        if(!$("#agree_to_terms").is(':checked')) {
                             $('#agreement-error-message').show();
                             $('#agreement-error-container').addClass('alert alert-error');
                             e.preventDefault();
@@ -142,6 +94,10 @@
                         dialog.data.fadeIn('fast');
                         $('.simplemodal-wrap').css('overflow-y', 'scroll');
                         $('.modal-confirm-button').click(function(){
+                            $.post( "/accept", { url: "" })
+                                .done(function( data ) {
+                                    alert( "Data Loaded: " + data );
+                                });
                             $.modal.close();
                         });
                     },
@@ -161,14 +117,18 @@
         <div id="photo">
             <h2 class="permissions">YOUR PHOTO</h2>
             <p class="photo-p">
-                <img id='instagram-photo' alt="" src="" />
+                <img id='instagram-photo' alt="" src="<?=$user->images->standard_resolution->url?>" />
             </p>
             <div class="tweet photo-overlay">
                 <div class="content-container">
-                    <p class="avatar"></p>
+                    <p class="avatar">
+                        <img width="35" height="35" alt="<?=$user->user->username?>" src="<?=$user->user->profile_picture?>" />
+                    </p>
 
                     <div class="content">
-                        <p class="tweet-text"></p>
+                        <p class="tweet-text">
+                            <a href="http://instagram.com/<?=$user->caption->from->username?>"> @<?=$user->caption->from->username?> </a> : <?=$user->caption->text?>
+                        </p>
                         <p class="date"></p>
                     </div>
                 </div>
@@ -176,15 +136,27 @@
         </div><!-- /#photo -->
 
         <div id="terms">
-            <form action="/images/9388545/image_requests/69811f50a6e00131eff6422a5a56f21d/approval_start" method="post" id="permission-form">
+            <form action="<?=$call?>" method="post" id="permission-form">
                 <input id="authenticity_token" name="authenticity_token" type="hidden" value="Mro66h/72VUXeO3a/ynA1XUYgwiN1ZMEU5X5hyXmGyU=" />
 
                 <h2 class="permissions">
                     TERMS AND AGREEMENT
                 </h2>
 
-                <p>You have approved Filson to have full rights to your image and to post it in any way. <a href="/more-info?id=69811f50a6e00131eff6422a5a56f21d" class="terms" target="_new">Read more</a>
+                <p>You are approving Filson to have full rights to your image and to post it in any way. <a href="/more-info" class="terms" target="_new">Read more</a>
+
+                <div class="checkbox">
+                    <label>
+                        <input id="agree_to_terms" value="accept" type="checkbox"><div style="padding-top:3px"> Accept the Terms of Service agreement? </div>
+                    </label>
+                </div>
+
+                    <br />
+
+                <button id="approve-button" class="btn btn-primary modal-confirm-button" type="submit">Accept</button>
+
             </form>
+
         </div><!-- #/terms -->
 
     </div>
@@ -197,9 +169,9 @@
     </span>
         </p>
         <p class="c3">
-    <span class="c2">
-      IMPORTANT - READ CAREFULLY. THIS AGREEMENT GRANTS TO FILSON (&quot;BRAND&quot;) A LICENSE TO A PHOTOGRAPH TAKEN BY YOU AND POSTED ON SOCIAL MEDIA (&quot;PHOTO&quot;). BY CLICKING THE &quot;ACCEPT&quot; BUTTON (BELOW) YOU OR THE ORGANIZATION YOU REPRESENT ARE UNCONDITIONALLY CONSENTING TO BE BOUND BY AND ARE BECOMING A PARTY TO THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, CLICK THE &quot;DO NOT ACCEPT&quot; BUTTON (BELOW). IF YOU ARE EXECUTING THIS AGREEMENT ON BEHALF OF AN ORGANIZATION, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO DO SO.
-    </span>
+            <span class="c2">
+              IMPORTANT - READ CAREFULLY. THIS AGREEMENT GRANTS TO FILSON (&quot;BRAND&quot;) A LICENSE TO A PHOTOGRAPH TAKEN BY YOU AND POSTED ON SOCIAL MEDIA (&quot;PHOTO&quot;). BY CLICKING THE &quot;ACCEPT&quot; BUTTON (BELOW) YOU OR THE ORGANIZATION YOU REPRESENT ARE UNCONDITIONALLY CONSENTING TO BE BOUND BY AND ARE BECOMING A PARTY TO THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, CLICK THE &quot;DO NOT ACCEPT&quot; BUTTON (BELOW). IF YOU ARE EXECUTING THIS AGREEMENT ON BEHALF OF AN ORGANIZATION, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO DO SO.
+            </span>
         </p>
         <ol class="c8 lst-kix_list_1-0 start" start="1">
             <li class="c1">
@@ -221,7 +193,6 @@
         <p class="c6">
     <span>
     </span>
-        </p>
 
         <p style="text-align:Center;"><button class="btn btn-primary modal-confirm-button">OK.</button></p>
         <p style="text-align:Center;"><button class="btn btn-primary" id='dl-link'><a href="/terms?download=true&amp;id=69811f50a6e00131eff6422a5a56f21d">Download Agreement</a></button></p>

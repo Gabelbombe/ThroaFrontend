@@ -10,7 +10,9 @@ Route::get('/', function() {
 
 //Route::get('/php-info', 'HomeController@PHPInfo');
 
-    Route::get('/', 'GrantController@Init');
+Route::get('/', 'GrantController@Init');
+
+Route::get('/accept', 'ResponseController@Init');
 
 // backporting of old application
 Route::get('/generic', function()

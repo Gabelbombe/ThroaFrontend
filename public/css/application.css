@@ -2,8 +2,8 @@
 
 @font-face {
 	font-family: 'adelleregularwebfont';
-	src: url('adelleregularwebfont.eot');
-	src: local('adelleregularwebfont'), url('adelleregularwebfont.woff') format('woff'), url('adelleregularwebfont.ttf') format('truetype');
+	src: url(/'adelleregularwebfont.eot');
+	src: local('adelleregularwebfont'), url(/'adelleregularwebfont.woff') format('woff'), url(/'adelleregularwebfont.ttf') format('truetype');
 }
 
 .adelle {
@@ -48,7 +48,7 @@ b {
 }
 
 #copy-modal-container a.modalCloseImg,#simplemodal-container a.modalCloseImg {
-    background: url(img/modal-close.png) center center no-repeat;
+    background: url(/img/modal-close.png) center center no-repeat;
     width: 30px;
     height: 30px;
     display: inline;
@@ -145,7 +145,7 @@ b {
 .tweet-preview .actions li {
     display: inline-block;
     font: 13px/22px "Helvetica Neue",Arial,sans-serif;
-    background: url("/img/twitter-sprites-icons.png") no-repeat;
+    background: url(/"/img/twitter-sprites-icons.png") no-repeat;
     height: 20px;
     margin-right: 15px;
     padding-left: 25px;
@@ -3310,7 +3310,7 @@ input:focus:invalid:focus,textarea:focus:invalid:focus,select:focus:invalid:focu
 }
 
 input.search-query {
-    background-image: url(img/icon-search-16.png);
+    background-image: url(/img/icon-search-16.png);
     background-position: 97% center;
     background-repeat: no-repeat;
 }
@@ -3455,7 +3455,7 @@ legend+.control-group {
 }
 
 .atags.with-autocomplete .atags-wrap-tags {
-    background-image: url(img/icon-search-16.png);
+    background-image: url(/img/icon-search-16.png);
     background-position: 98% 6px;
     background-repeat: no-repeat;
     padding-right: 22px;
@@ -4817,7 +4817,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs-container {
-    background: transparent url(img/bg_hr.gif) left bottom repeat-x;
+    background: transparent url(/img/bg_hr.gif) left bottom repeat-x;
     margin-bottom: 15px;
 }
 
@@ -4826,7 +4826,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs {
-    background: transparent url(img/bg_hr.gif) left bottom repeat-x;
+    background: transparent url(/img/bg_hr.gif) left bottom repeat-x;
     padding-bottom: 2px;
 }
 
@@ -4864,7 +4864,7 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs>.active>a,.nav-tabs>.active>a:hover {
-    background: #f9f9f9 url(img/bg_hr.gif) left bottom repeat-x;
+    background: #f9f9f9 url(/img/bg_hr.gif) left bottom repeat-x;
     color: #396246;
     cursor: default;
     outline: none;
@@ -8760,7 +8760,7 @@ a.label:hover,a.badge:hover {
 }
 
 .vertical-separator {
-    background: transparent url(/images/bg_vertical_separator.gif) top left repeat-y;
+    background: transparent url(//images/bg_vertical_separator.gif) top left repeat-y;
     padding-left: 50px;
 }
 
@@ -9531,11 +9531,11 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
 }
 
 .ui-datepicker .ui-datepicker-prev span {
-    background-image: url("img/icons/left-16.png");
+    background-image: url(/"img/icons/left-16.png");
 }
 
 .ui-datepicker .ui-datepicker-next span {
-    background-image: url("img/icons/right-16.png");
+    background-image: url(/"img/icons/right-16.png");
 }
 
 .ui-datepicker .ui-datepicker-title {
@@ -9725,7 +9725,7 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
 }
 
 .brews-stock-page .empty-stock .container {
-    background: transparent url(img/stock/promo.png) right bottom no-repeat;
+    background: transparent url(/img/stock/promo.png) right bottom no-repeat;
     padding: 30px 0;
 }
 
@@ -9781,7 +9781,7 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
 }
 
 .brief-list-page .empty-briefs .container {
-    background: transparent url(img/briefs/bg_empty.gif) right bottom no-repeat;
+    background: transparent url(/img/briefs/bg_empty.gif) right bottom no-repeat;
     min-height: 164px;
     padding-bottom: 30px;
 }
@@ -10086,7 +10086,7 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
     top: 0;
     width: 20px;
     height: 100%;
-    background: url("img/analytics/resizable-handle.gif") center center no-repeat;
+    background: url(/"img/analytics/resizable-handle.gif") center center no-repeat;
 }
 
 .post-analytics-page .option-group .btn-group.draggable .dragger .ui-resizable-handle.ui-resizable-e {
@@ -10122,7 +10122,7 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
 }
 
 .post-published-list-page .empty-promo .container {
-    background: transparent url(img/posts/promo.png) right bottom no-repeat;
+    background: transparent url(/img/posts/promo.png) right bottom no-repeat;
     padding: 30px 0;
 }
 
@@ -10159,28 +10159,28 @@ a.inverse.disabled,.inverse-link.disabled,a.inverse.inactive,.inverse-link.inact
 }
 
 form.twitter-connect button {
-    background: url("/images/registration/button-connect-twitter.png");
+    background: url(/"/images/registration/button-connect-twitter.png");
     width: 240px;
     height: 34px;
     border: 0;
 }
 
 form.linkedin-connect button {
-    background: url("/images/registration/button-connect-linkedin.png");
+    background: url(/"/images/registration/button-connect-linkedin.png");
     width: 240px;
     height: 34px;
     border: 0;
 }
 
 form.tumblr-connect button {
-    background: url("/images/registration/button-connect-tumblr.png");
+    background: url(/"/images/registration/button-connect-tumblr.png");
     width: 240px;
     height: 34px;
     border: 0;
 }
 
 form.google-connect button {
-    background: url("/images/registration/button-connect-reader.png");
+    background: url(/"/images/registration/button-connect-reader.png");
     width: 240px;
     height: 34px;
     border: 0;
@@ -12057,11 +12057,11 @@ form.google-connect button {
 }
 
 .prclt-aviary #avpw_apply_container {
-    background: url("img/aviary/check-16.png") 3px center no-repeat;
+    background: url(/"img/aviary/check-16.png") 3px center no-repeat;
 }
 
 .prclt-aviary #avpw_all_effects,.prclt-aviary #avpw_up_one_level {
-    background: url("img/aviary/close-16.png") 3px center no-repeat;
+    background: url(/"img/aviary/close-16.png") 3px center no-repeat;
 }
 
 .prclt-aviary #avpw_apply_container,.prclt-aviary #avpw_all_effects,.prclt-aviary #avpw_up_one_level {
@@ -12297,7 +12297,7 @@ form.google-connect button {
 
 .prclt-aviary #avpw_straighten_handle,.prclt-aviary .avpw_crop_handle_bl,.prclt-aviary .avpw_selection_overlay_size_handle {
     border: none;
-    background: transparent url("img/aviary/transform-16.png") center center no-repeat;
+    background: transparent url(/"img/aviary/transform-16.png") center center no-repeat;
     bottom: -10px;
     right: -10px;
 }
@@ -12903,11 +12903,11 @@ form.google-connect button {
 }
 
 .prclt-aviary .avpw_prev .avpw_arrow_icon {
-    background-image: url("img/icons/aviary-scroll-left-32.png");
+    background-image: url(/"img/icons/aviary-scroll-left-32.png");
 }
 
 .prclt-aviary .avpw_next .avpw_arrow_icon {
-    background-image: url("img/icons/aviary-scroll-right-32.png");
+    background-image: url(/"img/icons/aviary-scroll-right-32.png");
 }
 
 .prclt-aviary #avpw_controlpanel_textwithfont .avpw_next .avpw_arrow_icon,.prclt-aviary #avpw_controlpanel_textwithfont .avpw_prev .avpw_arrow_icon {
@@ -12940,11 +12940,11 @@ form.google-connect button {
 }
 
 .prclt-aviary #avpw_controlpanel_textwithfont .avpw_prev .avpw_arrow_icon {
-    background-image: url("img/icons/aviary-scroll-left-16.png");
+    background-image: url(/"img/icons/aviary-scroll-left-16.png");
 }
 
 .prclt-aviary #avpw_controlpanel_textwithfont .avpw_next .avpw_arrow_icon {
-    background-image: url("img/icons/aviary-scroll-right-16.png");
+    background-image: url(/"img/icons/aviary-scroll-right-16.png");
 }
 
 .prclt-aviary #avpw_tool_content_wrapper {
@@ -13243,7 +13243,7 @@ form.google-connect button {
 }
 
 .prclt-aviary .avpw_slider_container .avpw_slider_positioned .avpw_slider_handle {
-    background: #fff url("img/aviary/resizable-handle.gif") center center no-repeat;
+    background: #fff url(/"img/aviary/resizable-handle.gif") center center no-repeat;
 }
 
 .prclt-aviary .avpw_slider_container .avpw_slider_positioned .avpw_slider_positioned_inner {
@@ -13257,7 +13257,7 @@ form.google-connect button {
 }
 
 .prclt-aviary #avpw_controlpanel_textwithfont .avpw_inset_button_with_plus {
-    background: transparent url("img/aviary/arrow-green.png") 10px center no-repeat;
+    background: transparent url(/"img/aviary/arrow-green.png") 10px center no-repeat;
     height: 13px;
     line-height: 13px;
     font-family: "Sentinel A","Sentinel B",georgia;
@@ -13994,7 +13994,7 @@ form.google-connect button {
     position: fixed;
     width: 100%;
     left: 0;
-    background: url("/images/upload/image_uploader.png") center top no-repeat;
+    background: url(/"/images/upload/image_uploader.png") center top no-repeat;
 }
 
 .media-library-editing .media-gallery .upload-media-grid-item {
@@ -14040,7 +14040,7 @@ form.google-connect button {
 .media-library-editing .media-gallery .action-grid-item.square {
     width: 218px;
     height: 218px;
-    background: url("/images/upload/uploadimages.png") center center no-repeat;
+    background: url(/"/images/upload/uploadimages.png") center center no-repeat;
     transition: opacity 0.5s linear;
     border: 1px solid #e0e2e2;
     cursor: pointer;
@@ -14053,7 +14053,7 @@ form.google-connect button {
     width: 100%;
     height: 590px;
     min-width: 940px;
-    background: url("/images/upload/image_uploader.png") center top no-repeat transparent;
+    background: url(/"/images/upload/image_uploader.png") center top no-repeat transparent;
     min-height: 615px;
 }
 
@@ -14111,7 +14111,7 @@ form.google-connect button {
 }
 
 .media-library-editing-form .empty-tagging {
-    background: url("/images/upload/empty_tagging.png") center top no-repeat transparent;
+    background: url(/"/images/upload/empty_tagging.png") center top no-repeat transparent;
     height: 145px;
 }
 
@@ -15532,7 +15532,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
 }
 
 .post-preview .post-preview-facebook .post .link .image.no-image {
-    background: url("img/overlay/facebook-default-img.png") center center no-repeat;
+    background: url(/"img/overlay/facebook-default-img.png") center center no-repeat;
 }
 
 .post-preview .post-preview-facebook .post .link .content {
@@ -16120,12 +16120,12 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
 
 .predator-drawer .predator-drawer-cancel {
     left: 0;
-    background: url("img/aviary/close-16.png") 12px center no-repeat;
+    background: url(/"img/aviary/close-16.png") 12px center no-repeat;
 }
 
 .predator-drawer .predator-drawer-apply {
     right: 0;
-    background: url("img/aviary/check-16.png") 12px center no-repeat;
+    background: url(/"img/aviary/check-16.png") 12px center no-repeat;
 }
 
 .predator-tools-crop-drawer {
@@ -16177,7 +16177,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
     transform: rotate(45deg);
     width: 24px;
     height: 24px;
-    background: #2b2c30 url("img/aviary/transform-16.png") center no-repeat;
+    background: #2b2c30 url(/"img/aviary/transform-16.png") center no-repeat;
     cursor: nwse-resize;
     bottom: -6px;
     position: absolute;
@@ -16424,7 +16424,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
     transform: rotate(0deg);
     width: 24px;
     height: 24px;
-    background: #2b2c30 url("img/aviary/transform-16.png") center no-repeat;
+    background: #2b2c30 url(/"img/aviary/transform-16.png") center no-repeat;
     cursor: col-resize;
     margin-top: -12px;
     position: absolute;
@@ -16489,7 +16489,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
     transform: rotate(45deg);
     width: 24px;
     height: 24px;
-    background: #2b2c30 url("img/aviary/transform-16.png") center no-repeat;
+    background: #2b2c30 url(/"img/aviary/transform-16.png") center no-repeat;
     cursor: nwse-resize;
     bottom: -6px;
     position: absolute;
@@ -16707,43 +16707,43 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-original {
-    background-image: url("img/predator/filter-original.png");
+    background-image: url(/"img/predator/filter-original.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-afternoon {
-    background-image: url("img/predator/filter-afternoon.png");
+    background-image: url(/"img/predator/filter-afternoon.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-dawn {
-    background-image: url("img/predator/filter-dawn.png");
+    background-image: url(/"img/predator/filter-dawn.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-daybreak {
-    background-image: url("img/predator/filter-daybreak.png");
+    background-image: url(/"img/predator/filter-daybreak.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-dusk {
-    background-image: url("img/predator/filter-dusk.png");
+    background-image: url(/"img/predator/filter-dusk.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-evening {
-    background-image: url("img/predator/filter-evening.png");
+    background-image: url(/"img/predator/filter-evening.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-high-noon {
-    background-image: url("img/predator/filter-high-noon.png");
+    background-image: url(/"img/predator/filter-high-noon.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-midnight {
-    background-image: url("img/predator/filter-midnight.png");
+    background-image: url(/"img/predator/filter-midnight.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-sunrise {
-    background-image: url("img/predator/filter-sunrise.png");
+    background-image: url(/"img/predator/filter-sunrise.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-icon.predator-drawer-icon-item-icon-sunset {
-    background-image: url("img/predator/filter-sunset.png");
+    background-image: url(/"img/predator/filter-sunset.png");
 }
 
 .predator .predator-drawer-icon-item .predator-drawer-icon-item-label {
@@ -16798,7 +16798,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
 }
 
 .welcome-promo .illustration {
-    background: transparent url(img/promos/bg_welcome.png) right bottom no-repeat;
+    background: transparent url(/img/promos/bg_welcome.png) right bottom no-repeat;
     min-height: 355px;
 }
 
@@ -17031,7 +17031,7 @@ html.no-touch .post-form .gallery .media:hover .frame,html.oldie .post-form .gal
 }
 
 @font-face {
-    font-family:"Percocons";src:url("/fonts/percocons/perco-cons.eot");src:url("/fonts/percocons/perco-cons.eot?#iefix") format("embedded-opentype"),url("/fonts/percocons/perco-cons.ttf") format("truetype"),url("/fonts/percocons/perco-cons.svg#perco-cons") format("svg"),url("/fonts/percocons/perco-cons.woff") format("woff");font-weight:normal;font-style:normal;
+    font-family:"Percocons";src:url(/"/fonts/percocons/perco-cons.eot");src:url(/"/fonts/percocons/perco-cons.eot?#iefix") format("embedded-opentype"),url(/"/fonts/percocons/perco-cons.ttf") format("truetype"),url(/"/fonts/percocons/perco-cons.svg#perco-cons") format("svg"),url(/"/fonts/percocons/perco-cons.woff") format("woff");font-weight:normal;font-style:normal;
 }
 
 .pagination {
@@ -17088,18 +17088,18 @@ th {
 }
 
 #images .image .source-icon.twitter {
-    background: url("img/bird_blue_16_1.png") center center no-repeat rgba(255,255,255,0.45);
+    background: url(/"img/bird_blue_16_1.png") center center no-repeat rgba(255,255,255,0.45);
 }
 
 #images .image .source-icon.instagram {
-    background: url("img/instagram_sprite.png") center center no-repeat rgba(255,255,255,0.45);
+    background: url(/"img/instagram_sprite.png") center center no-repeat rgba(255,255,255,0.45);
 }
 
 #images .image .pending-icon {
     position: absolute;
     top: 0;
     left: 24px;
-    background: url("img/pending.png") center center no-repeat;
+    background: url(/"img/pending.png") center center no-repeat;
     width: 24px;
     height: 24px;
     background-color: rgba(255,255,255,0.45);
@@ -17265,7 +17265,7 @@ th {
 }
 
 .tweet .buttons span.pending {
-    background: url("img/pending.png") center left no-repeat;
+    background: url(/"img/pending.png") center left no-repeat;
     padding-left: 25px;
 }
 
@@ -17505,7 +17505,7 @@ form label {
 
 #tweet-preview-container {
     padding-top: 30px;
-    background: url("img/tweet-preview-bg.png") top left no-repeat #c0deed;
+    background: url(/"img/tweet-preview-bg.png") top left no-repeat #c0deed;
     height: 100%;
 }
 
@@ -17917,15 +17917,15 @@ html.public-permission-request body {
 }
 
 .nav-tabs {
-    background: transparent url(img/bg_hr.gif) left bottom repeat-x;
+    background: transparent url(/img/bg_hr.gif) left bottom repeat-x;
 }
 
 .nav-tabs-container {
-    background: transparent url(img/bg_hr.gif) left bottom repeat-x;
+    background: transparent url(/img/bg_hr.gif) left bottom repeat-x;
 }
 
 .nav-tabs>.active>a,.nav-tabs>.active>a:hover {
-    background: #f9f9f9 url(img/bg_hr.gif) left bottom repeat-x;
+    background: #f9f9f9 url(/img/bg_hr.gif) left bottom repeat-x;
 }
 
 .navbar-inner-top {
@@ -17938,4 +17938,14 @@ html.public-permission-request body {
     font-weight: bold;
     display: block;
     margin-bottom: 15px;
+}
+
+
+div.content p.tweet-text {
+    color: #b4aeb2;
+}
+
+
+.date {
+    color: #b4aeb2;
 }

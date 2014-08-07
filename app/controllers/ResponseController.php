@@ -14,7 +14,6 @@ Class ResponseController Extends BaseController
                 return Redirect::away(self::GALLERY);
             }
         }
-
         App::abort(418, 'You must be a teapot..');
     }
 

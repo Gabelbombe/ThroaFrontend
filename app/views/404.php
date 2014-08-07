@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>404 | Filson</title>
+    <title><?=$code?> | Filson</title>
     <link type="text/css" rel="stylesheet" media="all" href="/404/css/plax.css" />
 </head>
 <body>
@@ -44,8 +44,9 @@
         $.plax.enable();
     });
 
-<!-- <?="$code: $excp";?> --> s
-
 </script>
+
+<!-- <?="$code: $excp";?> -->
+
 </body>
 </html>

@@ -137,13 +137,11 @@
 
         <div id="terms">
             <form action="/accept/<?=$call?>" method="post" id="permission-form">
-                <input id="authenticity_token" name="authenticity_token" type="hidden" value="Mro66h/72VUXeO3a/ynA1XUYgwiN1ZMEU5X5hyXmGyU=" />
-
                 <h2 class="permissions">
                     TERMS AND AGREEMENT
                 </h2>
 
-                <p style="position: relative">You are approving Filson to have full rights to your image and to post it in any way. <a href="/more-info" class="terms" target="_new">Read more</a>
+                <p style="position: relative">You are approving Filson to have full rights to your image and to post it in any way. <a href="/more-info" class="terms" target="_new">Read more</a></p>
 
                 <div class="checkbox">
                         <p> <input id="agree_to_terms" value="accept" type="checkbox"><div style="float:left;margin: 3px 0;"> Accept the Terms of Service agreement? </div></p>

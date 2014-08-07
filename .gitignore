@@ -1,2 +1,3 @@
 .idea
-vendor
+vendor.DS_Store
+composer.lock

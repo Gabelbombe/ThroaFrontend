@@ -17823,7 +17823,7 @@ html.public-permission-request body {
 #permission-header {
     height: 290px;
     width: 940px;
-    margin: -10px auto -65px;
+    margin: -10px auto 0px;
 }
 
 @media only screen and (max-width: 568px) {

@@ -12,7 +12,11 @@ Route::get('/', function() {
 
 Route::get('/', 'GrantController@Init');
 
-Route::get('/accept', 'ResponseController@Init');
+Route::get('/debug', function() {
+    return View::make('debug');
+});
+
+
 
 // backporting of old application
 Route::get('/generic', function()

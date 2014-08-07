@@ -47,6 +47,7 @@
 
         <div class="tweet">
             <div class="content-container">
+
                 <p class="avatar">
                     <a href="http://twitter.com/filson1897">
                         <img alt="Filson® Since 1897" src="/img/filson-logo.png" />
@@ -113,6 +114,8 @@
         });
     </script>
 
+    <div style="padding-top:1em;" id="lame-spacer"><!-- lame spacer --></div>
+
     <div id="content">
         <div id="photo">
             <h2 class="permissions">YOUR PHOTO</h2>
@@ -143,17 +146,15 @@
                     TERMS AND AGREEMENT
                 </h2>
 
-                <p>You are approving Filson to have full rights to your image and to post it in any way. <a href="/more-info" class="terms" target="_new">Read more</a>
+                <p style="position: relative">You are approving Filson to have full rights to your image and to post it in any way. <a href="/more-info" class="terms" target="_new">Read more</a>
 
                 <div class="checkbox">
-                    <label>
-                        <input id="agree_to_terms" value="accept" type="checkbox"><div style="padding-top:3px"> Accept the Terms of Service agreement? </div>
-                    </label>
-                </div>
+                        <p> <input id="agree_to_terms" value="accept" type="checkbox"><div style="float:left;margin: 3px 0;"> Accept the Terms of Service agreement? </div></p>
 
                     <br />
 
-                <button id="approve-button" class="btn btn-primary modal-confirm-button" type="submit">Accept</button>
+                    <button style="text-align: center;" id="approve-button" class="btn btn-primary modal-confirm-button" type="submit">Accept</button>
+                </div>
 
             </form>
 

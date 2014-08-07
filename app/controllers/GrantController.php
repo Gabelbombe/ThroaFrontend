@@ -12,6 +12,8 @@ Class GrantController Extends BaseController
                $throaWidgetId   = false,
                $request         = false;
 
+    private    $err             = [];
+
     /**
      * Run the trap..
      *
@@ -67,7 +69,8 @@ Class GrantController Extends BaseController
                                      ],
                 ],
             ]
-        ))) !== count($input)) Throw New \RuntimeException("Bad metrics: {$this->filterNotEmpty($filter)}, in GET request..");
+        ))) !== count($input)) App::abort(403, "Bad metrics: {$this->filterNotEmpty($filter)}, in GET request..");
+
 
         foreach($input AS $key => $value)
         {
@@ -85,7 +88,7 @@ Class GrantController Extends BaseController
      */
     public function isBase64()
     {
-        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $this->request)) Throw New \LogicException('Data is of wrong type..');
+        if (! preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $this->request)) App::abort(403, 'Data is of wrong type..');
 
         $this->str = base64_decode($this->request);
 
@@ -98,7 +101,7 @@ Class GrantController Extends BaseController
      */
     public function isJson()
     {
-        if (! isset($this->str) || empty($this->str)) Throw New \LogicException('String was not set..');
+        if (! isset($this->str) || empty($this->str)) App::abort(403, 'String was not set..');
 
         $this->validateJsonContent();
 
@@ -113,7 +116,7 @@ Class GrantController Extends BaseController
     {
         $obj = json_decode($this->str);
 
-        if (empty($obj) || 0 !== json_last_error()) Throw New \LogicException('Decode error: ' . json_last_error_msg());
+        if (empty($obj) || 0 !== json_last_error()) App::abort(403, 'Decode error: ' . json_last_error_msg());
 
         $this->obj = $obj;
 

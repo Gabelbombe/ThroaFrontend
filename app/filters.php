@@ -22,6 +22,14 @@ App::after(function($request, $response)
 	//
 });
 
+App::missing(function($exception)
+{
+    return Response::view('errors.missing', [
+        'url' => Request::url(),
+        'err' => $exception,
+    ], 404);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

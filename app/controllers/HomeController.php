@@ -7,4 +7,8 @@ Class HomeController Extends BaseController
 		return View::make('default');
 	}
 
+    public function phpInfo()
+    {
+        return View::make('phpinfo');
+    }
 }

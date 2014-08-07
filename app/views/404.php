@@ -43,6 +43,10 @@
         $('#content').plaxify({"xRange":55,"yRange":14})
         $.plax.enable();
     });
+
+<!-- <?="$code: $excp";?> -->
+
+
 </script>
 </body>
 </html>

@@ -95,10 +95,7 @@
                         dialog.data.fadeIn('fast');
                         $('.simplemodal-wrap').css('overflow-y', 'scroll');
                         $('.modal-confirm-button').click(function(){
-                            $.post( "/accept", { url: "" })
-                                .done(function( data ) {
-                                    alert( "Data Loaded: " + data );
-                                });
+                            $('#agree_to_terms').prop('checked', true);
                             $.modal.close();
                         });
                     },
@@ -139,7 +136,7 @@
         </div><!-- /#photo -->
 
         <div id="terms">
-            <form action="<?=$call?>" method="post" id="permission-form">
+            <form action="/accept/<?=$call?>" method="post" id="permission-form">
                 <input id="authenticity_token" name="authenticity_token" type="hidden" value="Mro66h/72VUXeO3a/ynA1XUYgwiN1ZMEU5X5hyXmGyU=" />
 
                 <h2 class="permissions">

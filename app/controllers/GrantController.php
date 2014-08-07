@@ -2,8 +2,6 @@
 
 Class GrantController Extends BaseController
 {
-    const      CB_URL           = 'http://tool.throa.com/approve';
-
     protected  $str             = null,
                $obj             = null,
                $url             = null;
@@ -11,8 +9,6 @@ Class GrantController Extends BaseController
     protected  $throaItemId     = false,
                $throaWidgetId   = false,
                $request         = false;
-
-    private    $err             = [];
 
     /**
      * Run the trap..
@@ -143,7 +139,8 @@ Class GrantController Extends BaseController
 
     private function makeUrl()
     {
-        $this->url = self::CB_URL . "/{$this->throaItemId}/{$this->throaWidgetId}";
+//        $this->url = self::CB_URL . "/{$this->throaItemId}/{$this->throaWidgetId}";
+        $this->url = "{$this->throaItemId}/{$this->throaWidgetId}";
 
             return $this;
     }

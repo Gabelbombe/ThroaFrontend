@@ -2,42 +2,31 @@
 
 Class ResponseController Extends BaseController
 {
-    public function init()
+    const   CB_URL  = 'http://tool.throa.com/approve';
+    const   GALLERY = 'http://www.filson.com/filson-life/gallery/';
+
+    public function init($itemID, $widgetID)
     {
-        return 'true';
+        if (is_int($itemID) && is_int($widgetID))
+        {
+            if (202 === $this->post($itemID, $widgetID))
+            {
+                return Redirect::away(self::GALLERY);
+            }
+        }
+
+        App::abort(418, 'You must be a teapot..');
     }
 
-}
-
-
-/*
-/
- * Legacy
- * @param $url
- * @return $this
- * @throws HttpResponseException
- /
-private function testUrl($url)
-{
-    $qualified = self::INSTAGRAM . $url;
-
-    $ch = curl_init($qualified);
-    curl_setopt_array($ch, [
-        CURLOPT_RETURNTRANSFER => 1,
-    ]);
-
-    curl_exec($ch); // test
-
-    // falls between 200:OK and 206:Partial_Content
-    if (! in_array(curl_getinfo($ch, CURLINFO_HTTP_CODE), range(200,206)))
+    private function post($itemID, $widgetID)
     {
-        Throw New HttpResponseException('Asset url does not exists; halting compiler..');
+        $ch = curl_init(self::CB_URL . "/{$itemID}/{$widgetID}");
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => 1,
+        ]);
+
+        curl_exec($ch); // test
+
+        return curl_getinfo($ch, CURLINFO_HTTP_CODE);
     }
-
-        $this->setUrl($qualified);
-
-    curl_close($ch);
-
-    return $this;
 }
-*/

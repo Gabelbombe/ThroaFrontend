@@ -1,24 +1,14 @@
 <?php
 
-// http://54.200.197.102:8080/generic?url=gPFGUruPP4&app=1234
-/*
-Route::get('/', function() {
-    return View::make('404');
-});
- */
-
-
-//Route::get('/php-info', 'HomeController@PHPInfo');
-
 Route::get('/', 'GrantController@Init');
 
-Route::get('/debug', function() {
-    return View::make('debug');
-});
+
+Route::post('/accept/{itemID}/{widgetID}', ['as' => 'response', 'uses' => 'ResponseController@Init'])->where([
+        'widgetID'  => '[0-9]+',
+        'itemID'    => '[0-9]+',
+    ]);
 
 
-
-// backporting of old application
 Route::get('/generic', function()
 {
     if (count(array_filter($filter = filter_var_array(

@@ -1,5 +1,6 @@
 <?php
-Class GrantController Extends BaseController
+
+Class ResponseController Extends BaseController
 {
     public function init()
     {

@@ -2,8 +2,8 @@
 
 Class ResponseController Extends BaseController
 {
-    const   CB_URL  = 'http://tool.throa.com/approve';
-    const   GALLERY = 'http://www.filson.com/filson-life/gallery/';
+    const   CB_URL  = 'http://tool.throa.com/index.php/permission/auth';
+    const   GALLERY = 'http://filson.zaneray.com/filson/filson-life/gallery/';
 
     public function init($itemID, $widgetID)
     {

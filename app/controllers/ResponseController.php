@@ -7,12 +7,13 @@ Class ResponseController Extends BaseController
 
     public function init($itemID, $widgetID)
     {
-        if (is_int($itemID) && is_int($widgetID))
+        if (preg_match('/^[1-9][0-9]{0,25}$/', $itemID) && preg_match('/^[1-9][0-9]{0,25}$/', $widgetID))
         {
-            if (202 === $this->post($itemID, $widgetID))
+            if (202 === ($post = $this->post($itemID, $widgetID)))
             {
                 return Redirect::away(self::GALLERY);
             }
+			App::abort($post, "Response was: $post");
         }
         App::abort(418, 'You must be a teapot..');
     }

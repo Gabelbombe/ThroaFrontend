@@ -4,9 +4,21 @@ Route::get('/', 'GrantController@Init');
 
 
 Route::post('/accept/{itemID}/{widgetID}', ['as' => 'response', 'uses' => 'ResponseController@Init'])->where([
-        'widgetID'  => '[0-9]+',
-        'itemID'    => '[0-9]+',
-    ]);
+    'widgetID'  => '[0-9]+',
+    'itemID'    => '[0-9]+',
+]);
+
+
+Route::get('/converter', [
+    'as'    => 'converter',
+    'uses'  => 'ConverterController@Init'
+]);
+
+
+Route::post('/converter', [
+    'as'    => 'converter',
+    'uses'  => 'ConverterController@Post'
+]);
 
 
 Route::get('/generic', function()

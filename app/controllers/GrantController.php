@@ -25,8 +25,6 @@ Class GrantController Extends BaseController
             'user' => $this->obj,
             'call' => $this->url,
         ]);
-
-
     }
 
     /**
